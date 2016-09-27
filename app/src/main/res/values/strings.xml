@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Technologie_jeu</string>
+    <string name="toucher_text">Vous touché l\'écran</string>
+    <string name="pas_toucher_Text">Vous ne touché pas l\'écran</string>
 </resources>

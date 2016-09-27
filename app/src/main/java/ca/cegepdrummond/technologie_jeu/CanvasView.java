@@ -65,7 +65,7 @@ public class CanvasView extends View {
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
         hold = true;
-        mTextView.setText("Hold");
+        mTextView.setText(R.string.toucher_text);
     }
 
     // when ACTION_MOVE move touch according to the x,y values
@@ -82,7 +82,7 @@ public class CanvasView extends View {
     // when ACTION_UP stop touch
     private void upTouch() {
         hold = false;
-        mTextView.setText("not Hold");
+        mTextView.setText(R.string.pas_toucher_Text);
         mPath.reset();
     }
 
