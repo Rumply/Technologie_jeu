@@ -42,7 +42,4 @@ public class MainActivity extends Activity {
 
         tts.speak(infoToSpeak, TextToSpeech.QUEUE_FLUSH, null);
     }
-
-
-
 }
