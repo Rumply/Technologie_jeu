@@ -9,9 +9,13 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
+
 import java.util.Random;
 
 public class CanvasView extends View {
+
+    public TextView mTextView;
 
     private Bitmap mBitmap;
     private Canvas mCanvas;
@@ -22,6 +26,8 @@ public class CanvasView extends View {
     private float mX, mY;
     private static final float TOLERANCE = 3;
     private Random mRng;
+
+    private Boolean hold;
 
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -39,6 +45,8 @@ public class CanvasView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeWidth(12f);
+
+        mTextView = (TextView) findViewById(R.id.touchState_label);
     }
 
     // override onSizeChanged
@@ -52,47 +60,29 @@ public class CanvasView extends View {
         invalidate();
     }
 
-    // override onDraw
-    @Override
-    protected void onDraw(Canvas canvas) {
-        // draw the mPath with the mPaint on the canvas when onDraw
-        if (mEraseAll) {
-            mCanvas.drawColor(Color.WHITE);
-            mEraseAll = false;
-        } else {
-            mCanvas.drawPath(mPath, mPaint);
-            canvas.drawBitmap(mBitmap, 0f, 0f, null);
-        }
-        super.onDraw(canvas);
-    }
+
 
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
-        mPaint.setARGB(125, mRng.nextInt(255), mRng.nextInt(255), mRng.nextInt(255));
-        mPaint.setStrokeWidth((float)mRng.nextInt(49) + 1f);
-        mPath.moveTo(x, y);
-        mX = x;
-        mY = y;
+        hold = true;
+        mTextView.setText("Hold");
     }
 
     // when ACTION_MOVE move touch according to the x,y values
     private void moveTouch(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOLERANCE || dy >= TOLERANCE) {
-            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-            mX = x;
-            mY = y;
-        }
+
     }
 
     public void clearCanvas() {
         mEraseAll = true;
+        hold = false;
         invalidate();
     }
 
     // when ACTION_UP stop touch
     private void upTouch() {
+        hold = false;
+        mTextView.setText("not Hold");
         mPath.reset();
     }
 
@@ -117,5 +107,9 @@ public class CanvasView extends View {
                 break;
         }
         return true;
+    }
+
+    public boolean is_getting_touched(){
+        return hold;
     }
 }
