@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         customCanvas.mTextTouch = mTextTouch;
 
+
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
     }
