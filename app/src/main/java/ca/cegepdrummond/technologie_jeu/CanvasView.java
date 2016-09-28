@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class CanvasView extends View {
 
-    public TextView mTextView;
+    public TextView mTextTouch;
 
     private Bitmap mBitmap;
     private Canvas mCanvas;
@@ -46,7 +46,7 @@ public class CanvasView extends View {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeWidth(12f);
 
-        mTextView = (TextView) findViewById(R.id.touchState_label);
+        mTextTouch = (TextView) findViewById(R.id.touchState_label);
     }
 
     // override onSizeChanged
@@ -65,7 +65,7 @@ public class CanvasView extends View {
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
         hold = true;
-        mTextView.setText(R.string.toucher_text);
+        mTextTouch.setText(R.string.toucher_text);
     }
 
     // when ACTION_MOVE move touch according to the x,y values
@@ -82,7 +82,7 @@ public class CanvasView extends View {
     // when ACTION_UP stop touch
     private void upTouch() {
         hold = false;
-        mTextView.setText(R.string.pas_toucher_Text);
+        mTextTouch.setText(R.string.pas_toucher_Text);
         mPath.reset();
     }
 
