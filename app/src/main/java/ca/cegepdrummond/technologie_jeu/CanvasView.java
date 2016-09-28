@@ -29,6 +29,11 @@ public class CanvasView extends View {
 
     private Boolean hold;
 
+    float mBoutonRayon;
+    float center_x;
+    float center_y;
+
+
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
         context = c;
@@ -47,6 +52,12 @@ public class CanvasView extends View {
         mPaint.setStrokeWidth(12f);
 
         mTextTouch = (TextView) findViewById(R.id.touchState_label);
+
+        mBoutonRayon = 120;
+        //String width = attrs.getAttributeValue("android", "layout_width");
+        //String height = attrs.getAttributeValue("android", "layout_height");
+        //center_x = (Float.valueOf(width))/2;
+        //center_y = (Float.valueOf(height))/2;
     }
 
     // override onSizeChanged
@@ -68,9 +79,16 @@ public class CanvasView extends View {
         mTextTouch.setText(R.string.toucher_text);
     }
 
+    private float hyp(float a, float b){
+
+        return 0;
+    }
+
     // when ACTION_MOVE move touch according to the x,y values
     private void moveTouch(float x, float y) {
-
+        if (hyp(center_x - x, center_y - y) > mBoutonRayon){
+            mTextTouch.setText(R.string.pas_toucher_Text);
+        }
     }
 
     public void clearCanvas() {
