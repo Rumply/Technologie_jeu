@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class CanvasView extends View {
 
-    public TextView mTextView;
+    public TextView mTextTouch;
 
     private Bitmap mBitmap;
     private Canvas mCanvas;
@@ -28,6 +28,11 @@ public class CanvasView extends View {
     private Random mRng;
 
     private Boolean hold;
+
+    float mBoutonRayon;
+    float center_x;
+    float center_y;
+
 
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -46,7 +51,13 @@ public class CanvasView extends View {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeWidth(12f);
 
-        mTextView = (TextView) findViewById(R.id.touchState_label);
+        mTextTouch = (TextView) findViewById(R.id.touchState_label);
+
+        mBoutonRayon = 120;
+        //String width = attrs.getAttributeValue("android", "layout_width");
+        //String height = attrs.getAttributeValue("android", "layout_height");
+        //center_x = (Float.valueOf(width))/2;
+        //center_y = (Float.valueOf(height))/2;
     }
 
     // override onSizeChanged
@@ -65,12 +76,19 @@ public class CanvasView extends View {
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
         hold = true;
-        mTextView.setText(R.string.toucher_text);
+        mTextTouch.setText(R.string.toucher_text);
+    }
+
+    private float hyp(float a, float b){
+
+        return 0;
     }
 
     // when ACTION_MOVE move touch according to the x,y values
     private void moveTouch(float x, float y) {
-
+        if (hyp(center_x - x, center_y - y) > mBoutonRayon){
+            mTextTouch.setText(R.string.pas_toucher_Text);
+        }
     }
 
     public void clearCanvas() {
@@ -82,7 +100,7 @@ public class CanvasView extends View {
     // when ACTION_UP stop touch
     private void upTouch() {
         hold = false;
-        mTextView.setText(R.string.pas_toucher_Text);
+        mTextTouch.setText(R.string.pas_toucher_Text);
         mPath.reset();
     }
 

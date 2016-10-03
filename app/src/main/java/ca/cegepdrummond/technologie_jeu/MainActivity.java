@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,7 +17,8 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements SensorEventListener {
 
     private CanvasView customCanvas;
-    private TextView mTextView;
+    private TextView mTextTouch;
+    private TextView mTextCapteur;
 
     private SensorManager mSensorManager;
     private Sensor mProximity;
@@ -31,9 +33,11 @@ public class MainActivity extends Activity implements SensorEventListener {
         customCanvas.setBackground(this.getDrawable(R.drawable.shape));
 
 
-        mTextView = (TextView) findViewById(R.id.touchState_label);
+        mTextTouch = (TextView) findViewById(R.id.touchState_label);
+        mTextCapteur = (TextView) findViewById(R.id.capteurState_label);
 
-        customCanvas.mTextView = mTextView;
+        customCanvas.mTextTouch = mTextTouch;
+
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -44,10 +48,10 @@ public class MainActivity extends Activity implements SensorEventListener {
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
             if (event.values[0] == 0) {
                 //Action quand un objet est proche.
-                mTextView.setText("Capteur caché");
+                mTextCapteur.setText(R.string.msg_cacher);
             } else {
                 //Action quand un objet est loin. (Couleur noir peux nuir.)
-                mTextView.setText("Capteur non caché");
+                mTextCapteur.setText(R.string.msg_nonCacher);
             }
         }
     }
