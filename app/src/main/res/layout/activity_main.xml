@@ -9,23 +9,32 @@
 
     <LinearLayout android:orientation="vertical" android:layout_height="fill_parent" android:layout_width="fill_parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="146dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/msg_defaut_touchscreen"
-                android:id="@+id/touchState_label"
-                android:textSize="@dimen/msg_state_size"
-                android:textColor="@color/colorText"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/msgTop_touchscreen"
+            android:id="@+id/msgTop_label"
+            android:textSize="@dimen/msg_state_size"
+            android:textColor="@color/colorText"/>
 
-            <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/msg_defaut_touchscreen"
+            android:id="@+id/touchState_label"
+            android:textSize="@dimen/msg_state_size"
+            android:textColor="@color/colorText"/>
+
+        <TextView
                 android:layout_width="match_parent"
-                android:layout_height="146dp"
+                android:layout_height="91dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/msg_defaut_capteur"
                 android:id="@+id/capteurState_label"
                 android:textSize="@dimen/msg_state_size"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorText" />
 
         <LinearLayout android:layout_weight="1" android:layout_height="fill_parent" android:layout_width="fill_parent">
 
