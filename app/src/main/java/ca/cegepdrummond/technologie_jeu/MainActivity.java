@@ -12,6 +12,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements SensorEventListener {
@@ -31,7 +32,6 @@ public class MainActivity extends Activity implements SensorEventListener {
         customCanvas = (CanvasView) findViewById(R.id.touch_canvas);
 
         customCanvas.setBackground(this.getDrawable(R.drawable.shape));
-
 
         mTextTouch = (TextView) findViewById(R.id.touchState_label);
         mTextCapteur = (TextView) findViewById(R.id.capteurState_label);
