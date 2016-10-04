@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Technologie_jeu</string>
-    <string name="toucher_text">Vous touché le bouton</string>
     <string name="pas_toucher_Text">Bouton (Inactif)</string>
     <string name="msg_nonCacher">Capteur non caché</string>
     <string name="msg_cacher">Capteur caché</string>

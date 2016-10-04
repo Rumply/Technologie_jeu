@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,12 +53,6 @@ public class CanvasView extends View {
         mPaint.setStrokeWidth(12f);
 
         mTextTouch = (TextView) findViewById(R.id.touchState_label);
-
-
-        //String width = attrs.getAttributeValue("android", "layout_width");
-        //String height = attrs.getAttributeValue("android", "layout_height");
-        //center_x = (Float.valueOf(width))/2;
-        //center_y = (Float.valueOf(height))/2;
     }
 
     // override onSizeChanged
@@ -76,7 +71,8 @@ public class CanvasView extends View {
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
         hold = true;
-        mTextTouch.setText(R.string.toucher_text);
+        mTextTouch.setText(R.string.toucher_Text);
+
     }
 
     private float hyp(float a, float b){
@@ -102,7 +98,8 @@ public class CanvasView extends View {
 
     }
 
-    private String str(float valeur){
+    //
+    public String str(float valeur){
         return String.valueOf((int) valeur);
     }
 
