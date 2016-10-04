@@ -76,7 +76,7 @@ public class CanvasView extends View {
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
         hold = true;
-        mTextTouch.setText(R.string.toucher_text);
+        mTextTouch.setText(R.string.toucher_Text);
     }
 
     private float hyp(float a, float b){
