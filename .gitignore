@@ -1,9 +1,26 @@
-*.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
+
+# fichier built d'application
+*.apk
+*.ap_
+
+# fichier generer
 /build
+
+# Gradle/Android Studio
+*.iml
+.idea/
+.gradle/
+*.log
+
+# Local configuration file
+local.properties
+
+
+#/.idea/workspace.xml
+#/.idea/libraries
+
+# OS
+Thumbs.db
+
 /captures
-.idea
