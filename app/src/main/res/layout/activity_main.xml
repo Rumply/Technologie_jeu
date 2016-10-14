@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="81dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/msg_defaut_touchscreen"
             android:id="@+id/touchState_label"
             android:textSize="@dimen/msg_state_size"
             android:textColor="@color/colorText"/>
@@ -31,7 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="91dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/msg_defaut_capteur"
                 android:id="@+id/capteurState_label"
                 android:textSize="@dimen/msg_state_size"
                 android:textColor="@color/colorText" />
