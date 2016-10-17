@@ -1,10 +1,33 @@
 <resources>
-    <string name="app_name">Technologie_jeu</string>
-    <string name="pas_toucher_Text">Bouton (Inactif)</string>
-    <string name="msg_nonCacher">Capteur non caché</string>
-    <string name="msg_cacher">Capteur caché</string>
-    <string name="msg_defaut_touchscreen">Touch screen</string>
-    <string name="msg_defaut_capteur">Capteur</string>
-    <string name="msgTop_touchscreen">Jean dit: </string>
-    <string name="toucher_Text">Bouton (Actif)</string>
+
+    <!-- Option application -->
+        <string name="app_name">Jean dit: \nTechnologie!</string>
+
+    <!-- Main menu -->
+        <string name="BTN_jouer">Commencer</string>
+        <string name="BTN_tutoriel">Tutoriel</string>
+        <string name="BTN_a_propos">À propos</string>
+
+    <!-- Capteur proximité -->
+        <string name="msg_nonCacher">Capteur non caché</string>
+        <string name="msg_cacher">Capteur caché</string>
+
+    <!-- Écran tactile -->
+        <string name="pas_toucher_Text">Bouton (Inactif)</string>
+        <string name="toucher_Text">Bouton (Actif)</string>
+
+    <!-- Jean dit: -->
+        <string name="msgTop_touchscreen">Jean dit: </string>
+        <string name="jean_dit_touch_true">Touche le bouton</string>
+        <string name="jean_dit_touch_false">Ne touche pas le bouton</string>
+        <string name="jean_dit_capteur_true">Cache le capteur</string>
+        <string name="jean_dit_capteur_false">Ne cache pas le capteur</string>
+
+    <!-- Autre -->
+        <string name="msg_defaut_touchscreen">Écran tactile</string>
+        <string name="msg_defaut_capteur">Capteur</string>
+    <string name="textview_title2">Technologie!</string>
+    <string name="msg_temps_timer">Temps:</string>
+    <string name="msg_debut_tuto">Cache capteur si prêt</string>
+
 </resources>

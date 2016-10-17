@@ -1,75 +1,53 @@
 package ca.cegepdrummond.technologie_jeu;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.InsetDrawable;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends Activity implements SensorEventListener {
+public class MainActivity extends Activity {
 
-    private CanvasView customCanvas;
-    private TextView mTextTouch;
-    private TextView mTextCapteur;
-
-    private SensorManager mSensorManager;
-    private Sensor mProximity;
+    private Button btn_start;
+    private Button btn_tutoriel;
+    private Button btn_a_propos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        customCanvas = (CanvasView) findViewById(R.id.touch_canvas);
-
-        customCanvas.setBackground(this.getDrawable(R.drawable.shape));
-
-        mTextTouch = (TextView) findViewById(R.id.touchState_label);
-        mTextCapteur = (TextView) findViewById(R.id.capteurState_label);
-
-        customCanvas.mTextTouch = mTextTouch;
-
-
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-            if (event.values[0] == 0) {
-                //Action quand un objet est proche.
-                mTextCapteur.setText(R.string.msg_cacher);
-            } else {
-                //Action quand un objet est loin. (Couleur noir peux nuir.)
-                mTextCapteur.setText(R.string.msg_nonCacher);
+        btn_start = (Button) findViewById(R.id.button_jouer);
+        btn_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EnJeu.class);
+                startActivity(intent);
             }
-        }
+        });
+
+        btn_tutoriel = (Button) findViewById(R.id.button_tutoriel);
+        btn_tutoriel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Tutoriel.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_a_propos = (Button) findViewById(R.id.button_a_propos);
     }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
 
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(this);
     }
+
 }
