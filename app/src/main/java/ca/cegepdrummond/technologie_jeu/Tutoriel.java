@@ -30,10 +30,11 @@ public class Tutoriel extends JeuActivity{
         countTutoFini = 0;
 
         mTextTouch.setText(R.string.msg_debut_tuto);
+        start();
     }
 
 
-    @Override
+    /*@Override
     public void onSensorChanged(SensorEvent event) {
         super.onSensorChanged(event);
         if (!tutoCommencer){
@@ -41,7 +42,7 @@ public class Tutoriel extends JeuActivity{
             start();
         }
 
-    }
+    }*/
 
     public void start(){
 
@@ -55,7 +56,9 @@ public class Tutoriel extends JeuActivity{
         boolean reussi = false;
         mTextCapteur.setText(R.string.jean_dit_capteur_true);
         nouveauTimer(5);
-        TimerTask timerTask = new TimerTask() {
+        timer.start();
+
+        /*TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 while(!is_timerFini){
@@ -63,29 +66,11 @@ public class Tutoriel extends JeuActivity{
                     reussis[1] = is_bouton_toucher;
                 };
             }
-        };
+        };*/
+
+        //timerTask.run();
 
 
-        /*TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                long scheduleTime = System.currentTimeMillis();
-                long seconde = (System.currentTimeMillis() - scheduleTime) / 1000;
-                long currentTime;
-                while (seconde < 5 | reussis[2]){
-                    currentTime = System.currentTimeMillis();
-                    seconde = (System.currentTimeMillis() - scheduleTime) / 1000;
-                    reussis[0] = is_capteur_cacher;
-                    reussis[1] = is_bouton_toucher;
-                    if (reussis[0] & !reussis[1]){
-                        reussis[2] = true;
-                    }else{
-                        reussis[2] = false;
-                    }
-                }
-            }
-        };
-        timerTask.run();*/
 
         if (reussis[0] & !reussis[1]){
             reussi = true;
