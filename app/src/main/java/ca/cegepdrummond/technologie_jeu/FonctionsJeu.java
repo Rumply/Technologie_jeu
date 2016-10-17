@@ -8,22 +8,64 @@ import java.util.Random;
 
 public class FonctionsJeu {
 
-    public int numeroJeanDit;
+    private Random random;
+
+    private boolean jeanCacheCapteur;
+    private boolean jeanToucheBouton;
+
 
     protected void FonctionsJeu() {
-        numeroRandom();
+        jeanPense();
     }
 
-    public void numeroRandom() {
-        Random r = new Random();
-        this.numeroJeanDit = r.nextInt(1); // Gives n such that 0 <= n < 1
+
+
+    private boolean booleanRandom(){
+        return random.nextBoolean();
     }
 
-    public int quoiDire() {
-        if (this.numeroJeanDit == 0) {
-            return R.string.jean_dit_toucher_ecran;
-        } else {
-            return R.string.jean_dit_cacher_capteur;
+    public void jeanPense() {
+        this.jeanCacheCapteur = booleanRandom();
+        this.jeanToucheBouton = booleanRandom();
+    }
+
+    public int actionCapteur(){
+        int numRessource = -1;
+        if (jeanCacheCapteur){
+            numRessource = R.string.jean_dit_capteur_true;
+        }else{
+            numRessource = R.string.jean_dit_capteur_false;
         }
+
+        return  numRessource;
     }
+
+    public int actionBouton(){
+        int numRessource = -1;
+
+        if (jeanToucheBouton){
+            numRessource = R.string.jean_dit_touch_true;
+        }else{
+            numRessource = R.string.jean_dit_touch_false;
+        }
+
+        return  numRessource;
+    }
+
+    public boolean get_jeanCacheCapteur(){
+        return jeanCacheCapteur;
+    }
+
+    public void set_jeanCacheCapteur(boolean bool){
+        jeanCacheCapteur = bool;
+    }
+
+    public boolean get_jeanToucheBouton(){
+        return jeanToucheBouton;
+    }
+
+    public void set_jeanToucheBouton(boolean bool){
+        jeanToucheBouton = bool;
+    }
+
 }

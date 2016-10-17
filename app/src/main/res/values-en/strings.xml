@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jean said: \nTechnologie!</string>
+    <string name="BTN_a_propos">About</string>
+    <string name="BTN_jouer">Start</string>
+    <string name="BTN_tutoriel">Tutorial</string>
+    <string name="jean_dit_capteur_false">Don\'t hide the sensor</string>
+    <string name="jean_dit_capteur_true">Hide the sensor</string>
+    <string name="jean_dit_touch_false">Don\'t touch the button</string>
+    <string name="jean_dit_touch_true">Touch the button</string>
+    <string name="msgTop_touchscreen">Jean said:</string>
+    <string name="msg_cacher">Hidden sensor</string>
+    <string name="msg_defaut_capteur">Sensor</string>
+    <string name="msg_defaut_touchscreen">Touch screen</string>
+    <string name="msg_nonCacher">Sensor not hidden</string>
+    <string name="pas_toucher_Text">Button (Non active)</string>
+    <string name="textview_title2">Technology!</string>
+    <string name="toucher_Text">Button (Active)</string>
+    <string name="msg_debut_tuto">Cache capteur si pret</string>
+</resources>
