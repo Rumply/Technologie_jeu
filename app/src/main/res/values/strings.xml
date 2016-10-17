@@ -7,4 +7,5 @@
     <string name="msg_defaut_capteur">Capteur</string>
     <string name="msgTop_touchscreen">Jean dit: </string>
     <string name="toucher_Text">Bouton (Actif)</string>
+    <string name="jean_dit_toucher_ecran">Jean dit: Touche l\\\'écran</string>
 </resources>
