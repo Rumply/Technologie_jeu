@@ -26,6 +26,7 @@ public class JeuActivity  extends Activity implements SensorEventListener {
 
     protected CountDownTimer timer;
     protected boolean is_timerFini;
+    protected boolean have_fail_once;
 
     protected boolean is_capteur_cacher;
     protected boolean is_bouton_toucher;
@@ -56,6 +57,7 @@ public class JeuActivity  extends Activity implements SensorEventListener {
         is_capteur_cacher = false;
         is_bouton_toucher = false;
         is_timerFini = true;
+        have_fail_once = true;
 
         jeu = new FonctionsJeu();
     }
@@ -63,7 +65,12 @@ public class JeuActivity  extends Activity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-            is_capteur_cacher = (event.values[0] == 0);
+            if (event.values[0] == 0){
+                is_capteur_cacher = true;
+            }else{
+                is_capteur_cacher = false;
+            }
+
         }
     }
 
@@ -108,9 +115,26 @@ public class JeuActivity  extends Activity implements SensorEventListener {
                 mTextTimer.setText(R.string.msg_temps_timer);
                 mTextTimer.append("0");
                 is_timerFini = true;
+                verification();
             }
         };
 
         return true;
+    }
+
+    protected void verification() {
+        if (jeu.get_jeanCacheCapteur() == is_capteur_cacher){
+            if (jeu.get_jeanToucheBouton() == is_bouton_toucher){
+                if (is_timerFini){
+                    if (have_fail_once){
+                        mTextCapteur.setText("Bravo");
+                    }
+                }
+            }
+        }else{
+            if (!is_timerFini){
+                have_fail_once = false;
+            }
+        }
     }
 }

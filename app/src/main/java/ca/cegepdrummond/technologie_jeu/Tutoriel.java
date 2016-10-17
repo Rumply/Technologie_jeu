@@ -58,27 +58,6 @@ public class Tutoriel extends JeuActivity{
         nouveauTimer(5);
         timer.start();
 
-        /*TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                while(!is_timerFini){
-                    reussis[0] = is_capteur_cacher;
-                    reussis[1] = is_bouton_toucher;
-                };
-            }
-        };*/
-
-        //timerTask.run();
-
-
-
-        if (reussis[0] & !reussis[1]){
-            reussi = true;
-            mTextCapteur.setText("Bravo");
-        }else{
-            mTextCapteur.setText("Nop");
-        }
-
         return reussi;
     }
 
