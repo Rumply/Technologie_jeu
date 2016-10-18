@@ -36,6 +36,13 @@ public class MainActivity extends Activity {
         });
 
         btn_a_propos = (Button) findViewById(R.id.button_a_propos);
+        btn_a_propos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Propos.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
