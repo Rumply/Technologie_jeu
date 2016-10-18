@@ -26,7 +26,7 @@ public class JeuActivity  extends Activity implements SensorEventListener {
 
     protected CountDownTimer timer;
     protected boolean is_timerFini;
-    protected boolean have_fail_once;
+    protected boolean joueur_a_fait_erreur;
 
     protected boolean is_capteur_cacher;
     protected boolean is_bouton_toucher;
@@ -44,7 +44,7 @@ public class JeuActivity  extends Activity implements SensorEventListener {
 
         customCanvas.setBackground(this.getDrawable(R.drawable.shape));
 
-        mTextTimer = (TextView) findViewById(R.id.msg_temps_timer_label);
+        mTextTimer = (TextView) findViewById(R.id.countDown_label);
         mTextTouch = (TextView) findViewById(R.id.touchState_label);
         mTextCapteur = (TextView) findViewById(R.id.capteurState_label);
 
@@ -57,7 +57,7 @@ public class JeuActivity  extends Activity implements SensorEventListener {
         is_capteur_cacher = false;
         is_bouton_toucher = false;
         is_timerFini = true;
-        have_fail_once = true;
+        joueur_a_fait_erreur = true;
 
         jeu = new FonctionsJeu();
     }
@@ -94,7 +94,8 @@ public class JeuActivity  extends Activity implements SensorEventListener {
     protected boolean nouveauTimer(int temps){
 
         is_timerFini = false;
-
+        mTextTimer.setText(R.string.msg_temps_timer);
+        mTextTimer.append(String.valueOf(temps));
         timer = new CountDownTimer(temps*1000, 1000) {
 
             private int secondsUntilFinished = -1;
@@ -104,16 +105,13 @@ public class JeuActivity  extends Activity implements SensorEventListener {
                 int secondsTemp = Math.round(millisUntilFinished / 1000);
                 if (secondsUntilFinished != secondsTemp){
                     secondsUntilFinished = secondsTemp;
-                    mTextTimer.setText(R.string.msg_temps_timer);
-                    mTextTimer.append(String.valueOf(secondsUntilFinished));
+                    mTextTimer.setText(String.valueOf(secondsUntilFinished));
                 }
-
             }
 
             @Override
             public void onFinish() {
-                mTextTimer.setText(R.string.msg_temps_timer);
-                mTextTimer.append("0");
+                mTextTimer.setText("0");
                 is_timerFini = true;
                 verification();
             }
@@ -125,15 +123,11 @@ public class JeuActivity  extends Activity implements SensorEventListener {
     protected void verification() {
         if (jeu.get_jeanCacheCapteur() == is_capteur_cacher){
             if (jeu.get_jeanToucheBouton() == is_bouton_toucher){
-                if (is_timerFini){
-                    if (have_fail_once){
-                        mTextCapteur.setText("Bravo");
-                    }
-                }
+                mTextCapteur.setText("Bravo");
             }
         }else{
             if (!is_timerFini){
-                have_fail_once = false;
+                joueur_a_fait_erreur = false;
             }
         }
     }

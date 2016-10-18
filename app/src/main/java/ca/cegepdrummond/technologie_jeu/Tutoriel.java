@@ -26,23 +26,9 @@ public class Tutoriel extends JeuActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         countTutoFini = 0;
-
-        mTextTouch.setText(R.string.msg_debut_tuto);
         start();
     }
-
-
-    /*@Override
-    public void onSensorChanged(SensorEvent event) {
-        super.onSensorChanged(event);
-        if (!tutoCommencer){
-            tutoCommencer = true;
-            start();
-        }
-
-    }*/
 
     public void start(){
 
@@ -52,9 +38,7 @@ public class Tutoriel extends JeuActivity{
 
 
     private boolean tutoriel1() {
-        final boolean[] reussis = {false, false, false};
         boolean reussi = false;
-        mTextCapteur.setText(R.string.jean_dit_capteur_true);
         nouveauTimer(5);
         timer.start();
 

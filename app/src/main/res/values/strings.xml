@@ -26,8 +26,8 @@
     <!-- Autre -->
         <string name="msg_defaut_touchscreen">Écran tactile</string>
         <string name="msg_defaut_capteur">Capteur</string>
-    <string name="textview_title2">Technologie!</string>
-    <string name="msg_temps_timer">Temps:</string>
-    <string name="msg_debut_tuto">Cache capteur si prêt</string>
+        <string name="textview_title2">Technologie!</string>
+        <string name="msg_temps_timer">Temps: </string>
+        <string name="msg_debut_tuto">Cache capteur si prêt</string>
 
 </resources>
