@@ -10,6 +10,6 @@ import android.os.Bundle;
 public class Propos extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_jeu);
+        setContentView(R.layout.activity_propos);
     }
 }

@@ -13,7 +13,5 @@ public class EnJeu extends JeuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 }
