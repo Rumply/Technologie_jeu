@@ -25,7 +25,10 @@
         <activity
             android:name=".Tutoriel"
             android:screenOrientation="portrait">
-
+        </activity>
+        <activity
+            android:name=".Propos"
+            android:screenOrientation="portrait">
         </activity>
 
 
