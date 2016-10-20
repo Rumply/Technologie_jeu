@@ -17,9 +17,15 @@ import java.util.concurrent.ExecutionException;
  * Created by Rumpl_000 on 2016-10-14.
  */
 
-public class Tutoriel extends JeuActivity{
+interface startFunction
+{
+    public void start();
+}
+
+public class Tutoriel extends JeuActivity implements startFunction{
 
     private int countTutoFini;
+    private DecompteTimer timer;
     private boolean tutoCommencer = false;
 
 
@@ -35,28 +41,48 @@ public class Tutoriel extends JeuActivity{
         tutoriel1();
     }
 
-
-
-    private boolean tutoriel1() {
-        boolean reussi = false;
-        nouveauTimer(5);
+    public void partirTimer(int temps, boolean is_visible){
+        timer = new DecompteTimer(temps,is_visible,mTextTimer, jeu);
         timer.start();
-
-        return reussi;
     }
 
-    private boolean tutoriel2(){
-        boolean reussi = false;
+    public void jeanDit(boolean cacherCapteur, boolean toucherEcran){
+        if (cacherCapteur){
+            jeu.set_jeanCacheCapteur(true);
+            mTextCapteur.setText(R.string.jean_dit_capteur_true);
+        }else{
+            jeu.set_jeanCacheCapteur(false);
+            mTextCapteur.setText(R.string.jean_dit_capteur_false);
+        }
 
-        return reussi;
+        if (toucherEcran){
+            jeu.set_jeanToucheBouton(true);
+            mTextTouch.setText(R.string.jean_dit_touch_true);
+        }else {
+            jeu.set_jeanToucheBouton(false);
+            mTextTouch.setText(R.string.jean_dit_touch_false);
+        }
     }
 
-    private boolean tutoriel3(){
-        boolean reussi = false;
+    private void tutoriel1() {
+        jeu.set_jeanCacheCapteur(true);
+        mTextCapteur.setText(R.string.jean_dit_capteur_true);
+        jeu.set_jeanToucheBouton(false);
+        mTextTouch.setText(R.string.jean_dit_touch_false);
 
-        nouveauTimer(5);
-        timer.start();
-        return reussi;
+        tutoriel2();
+    }
+
+    private void tutoriel2(){
+        jeanDit(false, true);
+        partirTimer(5, true);
+
+        tutoriel3();
+    }
+
+    private void tutoriel3(){
+        jeanDit(true, true);
+        partirTimer(5, true);
     }
 
     private boolean tutoriel4(){
