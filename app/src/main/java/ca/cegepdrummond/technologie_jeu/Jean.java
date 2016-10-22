@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by Steve on 4 oct..
  */
 
-public class FonctionsJeu {
+public class Jean {
 
     private Random random;
 
@@ -14,11 +14,10 @@ public class FonctionsJeu {
     private boolean jeanToucheBouton;
 
 
-    protected void FonctionsJeu() {
+    public Jean() {
+        random = new Random();
         jeanPense();
     }
-
-
 
     private boolean booleanRandom(){
         return random.nextBoolean();
@@ -27,29 +26,6 @@ public class FonctionsJeu {
     public void jeanPense() {
         this.jeanCacheCapteur = booleanRandom();
         this.jeanToucheBouton = booleanRandom();
-    }
-
-    public int actionCapteur(){
-        int numRessource = -1;
-        if (jeanCacheCapteur){
-            numRessource = R.string.jean_dit_capteur_true;
-        }else{
-            numRessource = R.string.jean_dit_capteur_false;
-        }
-
-        return  numRessource;
-    }
-
-    public int actionBouton(){
-        int numRessource = -1;
-
-        if (jeanToucheBouton){
-            numRessource = R.string.jean_dit_touch_true;
-        }else{
-            numRessource = R.string.jean_dit_touch_false;
-        }
-
-        return  numRessource;
     }
 
     public boolean get_jeanCacheCapteur(){

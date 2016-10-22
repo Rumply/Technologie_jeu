@@ -17,62 +17,72 @@ import java.util.concurrent.ExecutionException;
  * Created by Rumpl_000 on 2016-10-14.
  */
 
-public class Tutoriel extends JeuActivity{
+interface startFunction
+{
+    public void start();
+}
+
+public class Tutoriel extends JeuActivity implements startFunction{
 
     private int countTutoFini;
+    private DecompteTimer timer;
     private boolean tutoCommencer = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         countTutoFini = 0;
-
-        mTextTouch.setText(R.string.msg_debut_tuto);
         start();
     }
-
-
-    /*@Override
-    public void onSensorChanged(SensorEvent event) {
-        super.onSensorChanged(event);
-        if (!tutoCommencer){
-            tutoCommencer = true;
-            start();
-        }
-
-    }*/
 
     public void start(){
 
         tutoriel1();
     }
 
+    public void partirTimer(int temps, boolean is_visible){
+        timer = new DecompteTimer(temps,is_visible,mTextTimer, jeu);
+        timer.start();
+    }
 
+    public void jeanDit(boolean cacherCapteur, boolean toucherEcran){
+        if (cacherCapteur){
+            jeu.set_jeanCacheCapteur(true);
+            mTextCapteur.setText(R.string.jean_dit_capteur_true);
+        }else{
+            jeu.set_jeanCacheCapteur(false);
+            mTextCapteur.setText(R.string.jean_dit_capteur_false);
+        }
 
-    private boolean tutoriel1() {
-        final boolean[] reussis = {false, false, false};
-        boolean reussi = false;
+        if (toucherEcran){
+            jeu.set_jeanToucheBouton(true);
+            mTextTouch.setText(R.string.jean_dit_touch_true);
+        }else {
+            jeu.set_jeanToucheBouton(false);
+            mTextTouch.setText(R.string.jean_dit_touch_false);
+        }
+    }
+
+    private void tutoriel1() {
+        jeu.set_jeanCacheCapteur(true);
         mTextCapteur.setText(R.string.jean_dit_capteur_true);
-        nouveauTimer(5);
-        timer.start();
+        jeu.set_jeanToucheBouton(false);
+        mTextTouch.setText(R.string.jean_dit_touch_false);
 
-        return reussi;
+        tutoriel2();
     }
 
-    private boolean tutoriel2(){
-        boolean reussi = false;
+    private void tutoriel2(){
+        jeanDit(false, true);
+        partirTimer(5, true);
 
-        return reussi;
+        tutoriel3();
     }
 
-    private boolean tutoriel3(){
-        boolean reussi = false;
-
-        nouveauTimer(5);
-        timer.start();
-        return reussi;
+    private void tutoriel3(){
+        jeanDit(true, true);
+        partirTimer(5, true);
     }
 
     private boolean tutoriel4(){

@@ -34,6 +34,8 @@ public class CanvasView extends View {
     public float center_x;
     public float center_y;
 
+    public Capteur capteurs;
+
 
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -53,6 +55,7 @@ public class CanvasView extends View {
         mPaint.setStrokeWidth(12f);
 
         mTextTouch = (TextView) findViewById(R.id.touchState_label);
+        capteurs = Capteur.getInstance();
     }
 
     // override onSizeChanged
@@ -71,7 +74,7 @@ public class CanvasView extends View {
     // when ACTION_DOWN start touch according to the x,y values
     private void startTouch(float x, float y) {
         hold = true;
-        mTextTouch.setText(R.string.toucher_Text);
+        capteurs.setIs_bouton_toucher(true);
 
     }
 
@@ -90,9 +93,9 @@ public class CanvasView extends View {
         float distance = mBoutonRayon - hyp(center_x - x, center_y - y);
 
         if (distance < 1){
-            mTextTouch.setText(R.string.pas_toucher_Text);
+            capteurs.setIs_bouton_toucher(false);
         } else if (distance > 0){
-            mTextTouch.setText(R.string.toucher_Text);
+            capteurs.setIs_bouton_toucher(true);
         }
 
 
@@ -112,7 +115,7 @@ public class CanvasView extends View {
     // when ACTION_UP stop touch
     private void upTouch() {
         hold = false;
-        mTextTouch.setText(R.string.pas_toucher_Text);
+        capteurs.setIs_bouton_toucher(false);
         mPath.reset();
     }
 
